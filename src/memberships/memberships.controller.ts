@@ -39,6 +39,13 @@ export class MembershipsController {
     return this.membershipsService.findOne(+id);
   }
 
+  
+  @Get('user/:id')
+  @ApiOperation({ summary: 'Get membership by user id' })
+  findOneIdUser(@Param('id') id: string) {
+    return this.membershipsService.findOneIdUser(id);
+  }
+
   @Patch(':id')
   @ApiOperation({ summary: 'Update path of the membership using id' })
   update(

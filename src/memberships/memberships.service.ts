@@ -59,8 +59,19 @@ export class MembershipsService {
         HttpStatus.BAD_REQUEST,
       );
     }
-    const membershipFound = this.membershipRepository.findOne({
+    const membershipFound = await this.membershipRepository.findOne({
       where:{ id: id },
+    })
+    if (!membershipFound) {
+      throw new HttpException("Membership is not found", HttpStatus.NOT_FOUND);
+    }
+    return membershipFound;
+  }
+
+  async findOneIdUser(id: string): Promise<Membership> {
+    const membershipFound = await this.membershipRepository.findOne({
+      where:{ id_user: {id} },
+      relations: ['id_user']
     })
     if (!membershipFound) {
       throw new HttpException("Membership is not found", HttpStatus.NOT_FOUND);
