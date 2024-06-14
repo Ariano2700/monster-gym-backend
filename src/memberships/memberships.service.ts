@@ -71,7 +71,7 @@ export class MembershipsService {
   async findOneIdUser(id: string): Promise<Membership> {
     const membershipFound = await this.membershipRepository.findOne({
       where:{ id_user: {id} },
-      relations: ['id_user']
+      relations: ['id_user', 'id_memberships_type']
     })
     if (!membershipFound) {
       throw new HttpException("Membership is not found", HttpStatus.NOT_FOUND);
