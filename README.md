@@ -101,6 +101,7 @@ pnpm install uuid
 pnpm install @types/uuid -D
 pnpm install --save @nestjs/passport passport passport-local
 pnpm install --save-dev @types/passport-local
+pnpm install --save @nestjs/schedule typeorm
 ```
 
 ## Using the built-in ValidationPipe

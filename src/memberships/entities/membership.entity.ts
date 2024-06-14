@@ -18,4 +18,7 @@ export class Membership {
 
   @ManyToOne(() => User)
   id_user: User;
+
+  @Column({ type: "boolean" })
+  active: boolean;
 }

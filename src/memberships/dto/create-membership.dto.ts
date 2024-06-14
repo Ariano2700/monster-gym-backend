@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDateString, IsInt, IsNotEmpty, IsUUID } from 'class-validator';
+import { IsBoolean, IsDateString, IsInt, IsNotEmpty, IsUUID } from 'class-validator';
 
 export class CreateMembershipDto {
   @IsDateString()
@@ -21,4 +21,9 @@ export class CreateMembershipDto {
   @IsNotEmpty()
   @ApiProperty({ required: true, description: 'User ID' })
   id_user: string;
+
+  @IsNotEmpty()
+  @IsBoolean()
+  @ApiProperty({ required: true, description:'Boolean active membership'})
+  active?: boolean;
 }

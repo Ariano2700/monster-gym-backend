@@ -1,6 +1,6 @@
 import { ApiProperty, PartialType } from '@nestjs/swagger';
 import { CreateMembershipDto } from './create-membership.dto';
-import { IsDateString, IsInt, IsOptional, IsUUID } from 'class-validator';
+import { IsBoolean, IsDateString, IsInt, IsOptional, IsUUID } from 'class-validator';
 
 export class UpdateMembershipDto extends PartialType(CreateMembershipDto) {
   @IsOptional()
@@ -22,4 +22,9 @@ export class UpdateMembershipDto extends PartialType(CreateMembershipDto) {
   @IsUUID()
   @ApiProperty({ required: false, description: 'User ID' })
   id_user?: string;
+
+  @IsOptional()
+  @IsBoolean()
+  @ApiProperty({ required: false, description:'Boolean active membership'})
+  active?: boolean;
 }
